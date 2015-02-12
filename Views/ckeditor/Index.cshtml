@@ -1,0 +1,21 @@
+﻿@model IEnumerable<ejemploCKEditorAzureStorage.Models.CKImageViewModel>
+
+@foreach (var image in Model)
+{
+    <a href="#" class="returnImage" data-url="@image.Url">
+        <img src="@image.Url" alt="Click to select" title="Click to select" id="image" data-source="@image.Url" width="200" height="200" />
+    </a>
+}
+
+@Scripts.Render("~/bundles/jquery")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".returnImage").click("click", function (e) {
+            var urlImage = $(this).attr("data-url");
+
+            window.opener.CKEDITOR.tools.callFunction(@(Request.QueryString["CKEditorFuncNum"]), urlImage);
+            window.close();
+        });
+    });
+</script>

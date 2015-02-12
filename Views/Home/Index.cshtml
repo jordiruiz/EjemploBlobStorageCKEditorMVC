@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@section Scripts {
+    <script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            CKEDITOR.replace('editor', {
+                filebrowserImageBrowseUrl: '@Url.Action("index", "ckeditor")',
+                filebrowserImageUploadUrl: '@Url.Action("uploadnow","ckeditor")',
+                htmlEncodeOutput: true
+            });
+        });
+    </script>
+}
+<div class="jumbotron">
+    <h1>EJEMPLO CKEDITOR + MVC + AZURE STORAGE</h1>
+    <p class="lead">SUBIR IMÁGENES A AZURE BLOB SOTARGE DESDE CKEDITOR EN UNA WEB ASP.NET MVC 5</p>    
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <textarea id="editor" name="editor" rows="50" cols="10">Texto de ejemplo</textarea>
+    </div>
+</div>
